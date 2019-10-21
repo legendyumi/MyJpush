@@ -1,13 +1,16 @@
 # MyJpush
 Android极光8.0自定义通知声音
+=====
 
 Android8.0以来通知确实用了NotificationChannel,项目中另一处的通知在8.0以上的手机有自定义的通知音,但是极光收到的推送则一直为默认的提示音。后来发现极光还未支持。从3.3.4才开始支持NotificationChannel。
 
 Android极光8.0自定义通知声音:
 
-1.升级极光sdk到3.3.4,并配置;
-注意:
-    1.项目的gradle文件里:
+1.升级极光sdk到3.3.4,并配置;<br>
+
+  ```
+注意:<br>
+    1.项目的gradle文件里:<br>
     //极光推送
     implementation 'cn.jiguang.sdk:jpush:3.3.6'
     implementation 'cn.jiguang.sdk:jcore:2.1.6'
@@ -15,7 +18,7 @@ Android极光8.0自定义通知声音:
                 JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-        ]
+        ]    
     2.manifest文件:
     <!-- 极光推送 -->
         <!-- 这个Service要继承JCommonService -->
@@ -49,8 +52,12 @@ Android极光8.0自定义通知声音:
         3.Application注册极光:
         JPushInterface.setDebugMode(false);
         JPushInterface.init(getApplicationContext());
+        ```
+        
 2.在res文件夹下新建raw目录,放入MP3文件(提示音);
 3.自定义广播接收器,在接收到通知时自定义声音:
+
+```
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
             //注意id,保持唯一,跟手机里其他APP的channelid一样时,声音会失效
@@ -85,3 +92,5 @@ Android极光8.0自定义通知声音:
                     .build();
             manager.notify(1, notification);
         }
+        
+ ```
