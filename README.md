@@ -52,6 +52,7 @@ Android极光8.0自定义通知声音:
         3.Application注册极光:
         JPushInterface.setDebugMode(false);
         JPushInterface.init(getApplicationContext());
+```
         
 2.在res文件夹下新建raw目录,放入MP3文件(提示音);
 3.自定义广播接收器,在接收到通知时自定义声音:
