@@ -9,8 +9,8 @@ Android极光8.0自定义通知声音:
 1.升级极光sdk到3.3.4,并配置;<br>
 
   ```
-注意:<br>
-    1.项目的gradle文件里:<br>
+注意:
+    1.项目的gradle文件里:
     //极光推送
     implementation 'cn.jiguang.sdk:jpush:3.3.6'
     implementation 'cn.jiguang.sdk:jcore:2.1.6'
@@ -52,7 +52,6 @@ Android极光8.0自定义通知声音:
         3.Application注册极光:
         JPushInterface.setDebugMode(false);
         JPushInterface.init(getApplicationContext());
-        ```
         
 2.在res文件夹下新建raw目录,放入MP3文件(提示音);
 3.自定义广播接收器,在接收到通知时自定义声音:
