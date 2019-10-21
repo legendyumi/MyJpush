@@ -1,4 +1,3 @@
-# MyJpush
 Android极光8.0自定义通知声音
 =====
 
@@ -20,7 +19,7 @@ Android极光8.0自定义通知声音:
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]    
     2.manifest文件:
-    <!-- 极光推送 -->
+        <!-- 极光推送 -->
         <!-- 这个Service要继承JCommonService -->
         <service android:name=".jpush.PushService"
             android:process=":pushcore">
@@ -49,13 +48,14 @@ Android极光8.0自定义通知声音:
                 <category android:name="com.example.myapplication" />
             </intent-filter>
         </receiver>
-        3.Application注册极光:
-        JPushInterface.setDebugMode(false);
-        JPushInterface.init(getApplicationContext());
+    3.Application注册极光:
+      JPushInterface.setDebugMode(false);
+      JPushInterface.init(getApplicationContext());
 ```
         
 2.在res文件夹下新建raw目录,放入MP3文件(提示音);<br>
-3.自定义广播接收器,在接收到通知时自定义声音(注意ChannelId,保持唯一,跟手机里其他APP的channelid一样时,声音会失效):
+3.自定义广播接收器,在接收到通知时自定义声音:<br>
+注意:**ChannelId保持唯一,跟手机里其他APP的channelid一样时,声音会失效**
 
 ```
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
